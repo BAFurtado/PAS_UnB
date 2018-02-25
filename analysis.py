@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy.stats import percentileofscore
 
 
 def plot(db, c):
@@ -16,5 +17,8 @@ if __name__ == "__main__":
     plt.show()
     df['rank'] = df['tot'].rank(method='max', ascending=False)
     df['percentile'] = pd.qcut(df.tot, 100, labels=False, retbins=False, precision=3, duplicates='drop')
+
+    # For a candidate specific result
+    percentileofscore(df.tot, 10.594)
 
 
